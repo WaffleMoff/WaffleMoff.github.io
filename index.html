@@ -38,15 +38,21 @@
     }
 
     /* Responsive logo styling */
-    @media (min-width: 768px) {
+    @media (max-width: 767px) {
       .header img {
-        width: 10%;  /* For larger screens */
+        width: 30%;  /* Larger logo for mobile */
       }
     }
 
-    @media (max-width: 767px) {
+    @media (min-width: 768px) and (max-width: 1024px) {
       .header img {
-        width: 20%;  /* For smaller screens */
+        width: 12%;  /* Medium-sized logo for tablets */
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .header img {
+        width: 15%;  /* Larger logo for large screens */
       }
     }
 
@@ -65,9 +71,21 @@
     }
 
     .image-container img {
-      max-width: 90%; /* Limits the image width to 90% of the container */
+      max-width: 100%; /* Full width for mobile */
       height: auto;
       border-radius: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .image-container img {
+        max-width: 80%; /* Smaller size for tablets */
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .image-container img {
+        max-width: 60%; /* Smaller size for large screens */
+      }
     }
 
     .timer {
