@@ -10,12 +10,15 @@
       font-family: Arial, sans-serif;
       background-color: #333;
       color: #f5f5dc;
-    }
-
-    .container {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       justify-content: space-between;
     }
 
@@ -36,16 +39,14 @@
 
     /* Responsive logo styling */
     @media (min-width: 768px) {
-      /* For desktop and larger tablets */
       .header img {
-        width: 10%;  /* Adjust for larger screens */
+        width: 10%;  /* For larger screens */
       }
     }
 
     @media (max-width: 767px) {
-      /* For mobile devices */
       .header img {
-        width: 20%;  /* Increase size for smaller screens */
+        width: 20%;  /* For smaller screens */
       }
     }
 
@@ -53,11 +54,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center; /* Centers the content */
       margin: 20px 0;
     }
 
+    .image-container {
+      display: flex;
+      justify-content: center; /* Centers the image horizontally */
+      width: 100%; /* Takes the full width */
+    }
+
     .image-container img {
-      width: 90%;
+      max-width: 90%; /* Limits the image width to 90% of the container */
       height: auto;
       border-radius: 10px;
     }
@@ -66,6 +74,7 @@
       font-size: 18px;
       font-weight: bold;
       margin: 10px 0;
+      text-align: center;
     }
 
     .footer {
