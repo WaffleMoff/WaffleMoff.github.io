@@ -10,11 +10,6 @@
       font-family: Arial, sans-serif;
       background-color: #333;
       color: #f5f5dc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
     }
 
     .container {
@@ -22,15 +17,12 @@
       flex-direction: column;
       min-height: 100vh;
       justify-content: space-between;
-      align-items: center;
-      width: 100%;
     }
 
     .header {
       background-color: #444;
       padding: 20px;
       text-align: center;
-      width: 100%;
     }
 
     .header h1 {
@@ -39,33 +31,35 @@
     }
 
     .header img {
-      width: 10%;
       vertical-align: middle;
+    }
+
+    /* Responsive logo styling */
+    @media (min-width: 768px) {
+      /* For desktop and larger tablets */
+      .header img {
+        width: 10%;  /* Adjust for larger screens */
+      }
+    }
+
+    @media (max-width: 767px) {
+      /* For mobile devices */
+      .header img {
+        width: 20%;  /* Increase size for smaller screens */
+      }
     }
 
     .content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      flex-grow: 1; /* Ensures content takes up available space */
-      width: 100%;
-    }
-
-    .image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
       margin: 20px 0;
     }
 
     .image-container img {
-      width: 60%;
-      max-height: 70vh;
+      width: 90%;
       height: auto;
       border-radius: 10px;
-      object-fit: contain;
     }
 
     .timer {
@@ -78,7 +72,6 @@
       background-color: #444;
       padding: 20px;
       text-align: center;
-      width: 100%;
     }
 
     .footer p {
@@ -118,55 +111,57 @@
 
     <!-- Footer Section -->
     <div class="footer">
-      <p>Send an email to erike@uchicago.edu if you are interested in purchasing any of the paintings.</p>
+      <p>Send an email to erikely8@gmail.com if you are interested in purchasing any of the paintings.</p>
     </div>
   </div>
 
-<script>
-  // Array of image paths
-  const images = [
-    '1.jpg',
-    '2.jpg',
-    '3.jpg',
-    '4.jpg',
-    '5.jpg',
-    '6.jpg',
-    '7.jpg',
-    '8.jpg'
-  ];
+  <script>
+    // Array of image paths
+    const images = [
+      '1.jpg',
+      '2.jpg',
+      '3.jpg',
+      '4.jpg',
+      '5.jpg',
+      '6.jpg',
+      '7.jpg',
+      '8.jpg'
+    ];
 
-  let currentImageIndex = Math.floor(Math.random() * images.length); // Randomly select the initial image
-  let timeLeft = 15;
+    let currentImageIndex = Math.floor(Math.random() * images.length); // Randomly select the initial image
+    let timeLeft = 15;
 
-  const painting = document.getElementById('painting');
-  const timeLeftDisplay = document.getElementById('time-left');
+    const painting = document.getElementById('painting');
+    const timeLeftDisplay = document.getElementById('time-left');
 
-  // Set the initial image to a random one
-  painting.src = images[currentImageIndex];
+    // Set the initial image to a random one
+    painting.src = images[currentImageIndex];
 
-  // Function to update image
-  function updateImage() {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    currentImageIndex = randomIndex;
-    painting.src = images[randomIndex];
-  }
-
-  // Function to update countdown timer
-  function updateTimer() {
-    if (timeLeft <= 1) {
-      updateImage();
-      timeLeft = 15; // Reset timer
-    } else {
-      timeLeft--;
+    // Function to update image, ensuring new image is different from the current one
+    function updateImage() {
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * images.length);
+      } while (randomIndex === currentImageIndex); // Keep picking until it's a different image
+      currentImageIndex = randomIndex;
+      painting.src = images[currentImageIndex];
     }
-    timeLeftDisplay.textContent = `Next painting in ${timeLeft} seconds`;
-  }
 
-  // Interval for image change every 15 seconds
-  setInterval(() => {
-    updateTimer();
-  }, 1000); // Update every second
-</script>
+    // Function to update countdown timer
+    function updateTimer() {
+      if (timeLeft <= 1) {
+        updateImage();
+        timeLeft = 15; // Reset timer
+      } else {
+        timeLeft--;
+      }
+      timeLeftDisplay.textContent = `Next painting in ${timeLeft} seconds`;
+    }
 
+    // Interval for image change every 15 seconds
+    setInterval(() => {
+      updateTimer();
+    }, 1000); // Update every second
+  </script>
 </body>
 </html>
